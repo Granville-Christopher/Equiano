@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-      scroll-behavior: smooth;
+      /* scroll-behavior: smooth; */
       background: radial-gradient(circle,  #000000, #2e2d2dc7,  #000000), url("../img/bookcover2.jpeg");
-      background-size: 400% 400%;
+      /* background-size: 400% 400%; */
       background-attachment: fixed;
       transition: background-position 0.1s linear;
   }
