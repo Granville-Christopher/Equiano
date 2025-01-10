@@ -2,151 +2,153 @@
 
 
   <!-- Hero Section -->
-  <header class="hero d-block" >
-    <h1 class="display-4 mt-5">From Equiano to Rihanna</h1>
-    <p class="lead">Most Famous Igbo African Diaspora and Their Struggle to Restore Human Dignity</p>
-
-    <div class="hero-image">
-        <img src="/img/bookcover.jpeg" class="img-fluid" width="100px" height="auto" alt="from Equiano to Rihanna">
-    </div>
-    
-    <a href="#buy" class="btn buy-btn  btn-lg mt-3">Buy Now</a>
-  </header>
-
-  <!-- Description Section -->
-  <section id="description" class="container my-5 fade-in slide-in-left animated-section">
-    <h5 class="text-center">About the Book</h5>
-    <% if (about) { %>
-      <p class="text-center"><%= about.about %> </p>
-    <% } else { %>
-      <p>no about uploaded yet</p>
-    <% } %>
-  </section>
-
+  <div class="container">
+    <header class="hero d-block" >
+      <h1 class="display-4 mt-5">From Equiano to Rihanna</h1>
+      <p class="lead">Most Famous Igbo African Diaspora and Their Struggle to Restore Human Dignity</p>
   
-  <!-- Related Books Section -->
-  <section id="related-books" class="container my-5 fade-in slide-in-right animated-section">
-    <h5 class="text-center">Related Books</h5>
-
-    <div class="swiper related-books-swiper justify-content-center">
+      <div class="hero-image">
+          <img src="/img/bookcover.jpeg" class="img-fluid" width="100px" height="auto" alt="from Equiano to Rihanna">
+      </div>
+      
+      <a href="#buy" class="btn buy-btn  btn-lg mt-3">Buy Now</a>
+    </header>
+  
+    <!-- Description Section -->
+    <section id="description" class="container my-5 fade-in slide-in-left animated-section">
+      <h5 class="text-center">About the Book</h5>
+      <% if (about) { %>
+        <p class="text-center"><%= about.about %> </p>
+      <% } else { %>
+        <p>no about uploaded yet</p>
+      <% } %>
+    </section>
+  
+    
+    <!-- Related Books Section -->
+    <section id="related-books" class="container my-5 fade-in slide-in-right animated-section">
+      <h5 class="text-center">Related Books</h5>
+  
+      <div class="swiper related-books-swiper justify-content-center">
+          <div class="swiper-wrapper">
+            <% if (related && related.length > 0) { %>
+              <% related.forEach(related => { %>
+              <div class="swiper-slide">
+                  <div class="single-img-post reso respo">
+                      <a href="<%= related.link %>" target="_blank" class="btn ">
+                        <img class="img-fluid " src="/uploadedimages/<%= related.image %>"  alt="">
+                      </a>
+                  </div>
+              </div>
+              <% }) %>
+            <% } else { %>
+              <p class="text-light">No books available.</p>
+            <% } %>          
+          </div>
+          <div class="swiper-pagination"></div>
+      </div>
+    </section>
+  
+  
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="container">
+      <h5 class="text-center">Our Testimonials</h5>
+      
+      <!-- Swiper or list of testimonials -->
+      <div class="swiper testimonials-swiper pb-4 px-3 pt-3 justify-content-center">
         <div class="swiper-wrapper">
-          <% if (related && related.length > 0) { %>
-            <% related.forEach(related => { %>
-            <div class="swiper-slide">
-                <div class="single-img-post reso respo">
-                    <a href="<%= related.link %>" target="_blank" class="btn ">
-                      <img class="img-fluid " src="/uploadedimages/<%= related.image %>"  alt="">
-                    </a>
+          <% if (testimonials && testimonials.length > 0) { %>
+            <% testimonials.forEach((testimonial) => { %>
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <blockquote>
+                    <p><%= testimonial.testimonial %></p>
+                    <footer><p style="font-size: 14px;"><%= testimonial.name %></p></footer>
+                  </blockquote>
                 </div>
-            </div>
-            <% }) %>
+              </div>
+            <% }); %>
           <% } else { %>
-            <p class="text-light">No books available.</p>
-          <% } %>          
+            <p>No testimonials available.</p>
+          <% } %>
         </div>
         <div class="swiper-pagination"></div>
-    </div>
-  </section>
-
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="container">
-    <h5 class="text-center">Our Testimonials</h5>
-    
-    <!-- Swiper or list of testimonials -->
-    <div class="swiper testimonials-swiper pb-4 px-3 pt-3 justify-content-center">
-      <div class="swiper-wrapper">
-        <% if (testimonials && testimonials.length > 0) { %>
-          <% testimonials.forEach((testimonial) => { %>
-            <div class="swiper-slide">
-              <div class="testimonial-card">
-                <blockquote>
-                  <p><%= testimonial.testimonial %></p>
-                  <footer><p style="font-size: 14px;"><%= testimonial.name %></p></footer>
-                </blockquote>
-              </div>
-            </div>
-          <% }); %>
-        <% } else { %>
-          <p>No testimonials available.</p>
-        <% } %>
       </div>
-      <div class="swiper-pagination"></div>
-    </div>
-    
-  </section>
-
-
-
-
-  <!-- About the Author Section -->
-  <section id="about-author" class="container my-5 fade-in slide-in-right animated-section">
-    <h5 class="text-center">About the Author</h5>
-    <% if (author) { %>
-      <p class="text-center"><%= author.author %></p>
-    <% } else { %>
-      <p>No About the Author uploaded yet.</p>
-    <% } %>
-    
-  </section>
-
-  <!-- Testimonial Form Section -->
-  <section id="testimonial-form" class="container my-5 fade-in slide-in-left animated-section">
-
-    <h5>Share Your Thoughts</h5>
-    <form id="testimonial-form" action="/submit-testimonial" method="POST">
-      <!-- Message Display Block -->
-      <div id="message" class="alert alert-dismissible alert-success" style=" <%= message ? 'display:block;' : 'display:none;' %>">
-        <% if (message) { %>
-          <%= message %> <!-- This will display the message -->
-        <% } %>
-      </div>
-
-      <div class="mb-3">
-        <label for="name" class="form-label">Your Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Your Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="testimonial" class="form-label">Your Testimonial</label>
-        <textarea class="form-control" id="testimonial" name="testimonial" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn">Submit</button>
-    </form>
-  </section>
+      
+    </section>
   
-
-  <!-- Purchase Section -->
-  <section id="buy" class="container my-5 fade-in slide-in-right animated-section">
-
-    <h5>Purchase the Book</h5>
-    <form id="purchase-form" action="" method="POST">
-
-      <div class="mb-3">
-        <label for="name" class="form-label">Your Name</label>
-        <input type="text" class="form-control" id="name" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Your Email</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="payment-method" class="form-label">Payment Method</label>
-        <select class="form-select" id="payment-method" required>
-          <option value="">Choose...</option>
-          <option value="credit-card">Credit Card</option>
-          <option value="paypal">PayPal</option>
-        </select>
-      </div>
-      <button type="submit" class="btn buy-btn">Purchase</button>
-    </form>
-  </section>
-
-  <!-- Scroll to Top Button -->
-  <button class="btn btn-secondary scroll-to-top" onclick="scrollToTop()">⬆</button>
+  
+  
+  
+    <!-- About the Author Section -->
+    <section id="about-author" class="container my-5 fade-in slide-in-right animated-section">
+      <h5 class="text-center">About the Author</h5>
+      <% if (author) { %>
+        <p class="text-center"><%= author.author %></p>
+      <% } else { %>
+        <p>No About the Author uploaded yet.</p>
+      <% } %>
+      
+    </section>
+  
+    <!-- Testimonial Form Section -->
+    <section id="testimonial-form" class="container my-5 fade-in slide-in-left animated-section">
+  
+      <h5>Share Your Thoughts</h5>
+      <form id="testimonial-form" action="/submit-testimonial" method="POST">
+        <!-- Message Display Block -->
+        <div id="message" class="alert alert-dismissible alert-success" style=" <%= message ? 'display:block;' : 'display:none;' %>">
+          <% if (message) { %>
+            <%= message %> <!-- This will display the message -->
+          <% } %>
+        </div>
+  
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="testimonial" class="form-label">Your Testimonial</label>
+          <textarea class="form-control" id="testimonial" name="testimonial" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </section>
+    
+  
+    <!-- Purchase Section -->
+    <section id="buy" class="container my-5 fade-in slide-in-right animated-section">
+  
+      <h5>Purchase the Book</h5>
+      <form id="purchase-form" action="" method="POST">
+  
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="payment-method" class="form-label">Payment Method</label>
+          <select class="form-select" id="payment-method" required>
+            <option value="">Choose...</option>
+            <option value="credit-card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+          </select>
+        </div>
+        <button type="submit" class="btn buy-btn">Purchase</button>
+      </form>
+    </section>
+  
+    <!-- Scroll to Top Button -->
+    <button class="btn btn-secondary scroll-to-top" onclick="scrollToTop()">⬆</button>
+  </div>
 
 
 
