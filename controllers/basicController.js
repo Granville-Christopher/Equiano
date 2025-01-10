@@ -1,6 +1,6 @@
 
 // controllers/basicController.js
-const Testimonial = require('../models/Testimonial'); // Adjust the path as needed
+const Testimonial = require('../models/testimonial'); // Adjust the path as needed
 const PdfFile = require('../models/pdf')
 
   
@@ -20,21 +20,14 @@ const submitTestimonial = async (req, res) => {
 
     // Directly sending the message to the view
     if (savedTestimonial) {
-      return res.render('user/index', {
-        testimonials: await Testimonial.find().sort({ createdAt: -1 }), 
-        message: "Review submitted successfully",
-        title: 'Welcome to the Index Page',
-      });
+      return res.status(200).redirect('/');
     } else {
-      return res.render('user/index', {
-        testimonials: await Testimonial.find().sort({ createdAt: -1 }),
-        message: "Error sending review",
-        title: 'Welcome to the Index Page',
-      });
+      req.session.message = "errror sending review"
+      return res.status(401).redirect('/');
     }
   } catch (error) {
     console.error(error);
-    return res.render('user/index', {
+    return res.status(200).redirect('/', {
       testimonials: await Testimonial.find().sort({ createdAt: -1 }),
       message: "Server error", // Send server error message
       title: 'Welcome to the Index Page',

@@ -96,7 +96,7 @@
     <h5>Share Your Thoughts</h5>
     <form id="testimonial-form" action="/submit-testimonial" method="POST">
       <!-- Message Display Block -->
-      <div id="message" class="alert alert-dismissible alert-success" style="<%= message ? 'display:block;' : 'display:none;' %>">
+      <div id="message" class="alert alert-dismissible alert-success" style=" <%= message ? 'display:block;' : 'display:none;' %>">
         <% if (message) { %>
           <%= message %> <!-- This will display the message -->
         <% } %>
