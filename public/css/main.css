@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-      /* scroll-behavior: smooth; */
+      scroll-behavior: smooth;
       background: radial-gradient(circle,  #000000, #2e2d2dc7,  #000000), url("../img/bookcover2.jpeg");
-      /* background-size: 400% 400%; */
+      background-size: 400% 400%;
       background-attachment: fixed;
       transition: background-position 0.1s linear;
   }
@@ -13,12 +13,14 @@ body {
     padding: 100px 20px;
     text-align: center;
   }
-  .hero h1 {
-    font-size: calc(2vw + 23px);
+  .hero h2 {
+    font-size: clamp(23px, 2vw + 23px, 50px); /* Scales within limits */
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    white-space: nowrap;
-  }
+    white-space: normal; /* Allow wrapping */
+    text-align: center;
+}
+
   .hero p{
     font-size: 16px;
   }
