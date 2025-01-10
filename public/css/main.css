@@ -1,0 +1,337 @@
+body {
+    font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      background: radial-gradient(circle,  #000000, #2e2d2dc7,  #000000), url("../img/bookcover2.jpeg");
+      background-size: 400% 400%;
+      background-attachment: fixed;
+      transition: background-position 0.1s linear;
+  }
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7011), rgba(0, 0, 0, 0.7011)), url('../img/bookcover2.jpeg') no-repeat center top/cover;
+    color: white;
+    /* height: 80vh; */
+    padding: 100px 20px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: calc(2vw + 23px);
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    white-space: nowrap;
+  }
+  .hero p{
+    font-size: 16px;
+  }
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 1000;
+  }
+  .fade-in {
+    animation: fadeIn 2s;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .hero  .buy-btn {
+    animation: zoomIn 2s infinite alternate;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    background-color: rgba(255, 0, 0, 0.588);
+  }
+  
+  #buy .buy-btn {
+      animation: zoomIn 2s infinite alternate;
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      background-color: rgba(255, 0, 0, 0.588);
+  }
+  #testimonial-form .btn {
+      animation: zoomIn 2s infinite alternate;
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      background-color: rgba(255, 0, 0, 0.588);
+  }
+
+  #about-author, #description, #buy, #related-books, #testimonials, #testimonial-form h3{
+    color: #d1d1d1;;
+  }
+
+  #description{
+    color: #d1d1d1;
+    animation: slideIn 2s;
+  }
+  #about-author{
+    color: #d1d1d1;
+    animation: slideIn2 2s;
+  }
+  #testimonial-form{
+    color: #d1d1d1;
+    animation: slideIn2 2s;
+  }
+  #testimonials{
+    animation: slideIn 2s;
+
+  }
+  #related-books{
+    animation: slideIn2 2s;
+  }
+  #buy #purchase-form  label{
+    color: #d1d1d1;
+  }
+  #testimonials .swiper-pagination {
+    margin-bottom: -10px;
+
+  }
+    /* Testimonial Card Styling */
+    .testimonial-card {
+        background: #ffffffc4; /* White background */
+        box-shadow: 0px 0px 5px 0px rgb(255, 255, 255);
+        border-radius: 8px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        text-align: center; /* Center-align content */
+        max-width: 400px;
+        overflow-y: scroll;
+        max-height: 200px;/* Optional max width for cards */
+        margin: auto; /* Center horizontally */
+        font-family: 'Arial', sans-serif; /* Font for text */
+    }
+
+    /* Blockquote Styling */
+    .testimonial-card blockquote {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: #292929c1; /* Darker text color */
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Author Styling */
+    .testimonial-card blockquote span {
+        display: block;
+        margin-top: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #555; /* Lighter gray for name */
+    }
+
+    /* Swiper Pagination Styling */
+    .testimonials-swiper .swiper-pagination-bullet {
+        background-color: #ffffff !important; 
+        margin-bottom: 10px;
+        /* box-shadow: 2px 2px 20px 5px rgb(255, 255, 255); */
+        transition: background-color 0.3s ease;
+    }
+
+    .testimonials-swiper .swiper-pagination{
+        background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    }
+
+    .testimonials-swiper .swiper-pagination-bullet-active {
+        background-color: rgb(255, 255, 255) !important; /* Active bullet color */
+    }
+    
+    .books .buttons button{
+      margin: 3px;
+    }
+
+    .related-books-swiper {
+    /* width: 100%; */
+        height: auto; /* Adjust as needed */
+    }
+
+    .swiper-slide {
+        text-align: center;
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .related-books-swiper .swiper-pagination-bullet {
+        background-color: white !important;
+        margin: 0 5px !important;
+        transition: background-color 0.3s ease !important;
+    }
+    
+    .related-books-swiper .swiper-pagination-bullet-active {
+        background-color: rgba(255, 0, 0, 0.588) !important; /* Active color */
+    }
+    
+    /* Default hidden state */
+.animated-section {
+    opacity: 0;
+    transform: translateX(0); /* Neutral transform */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth animation */
+}
+
+/* Slide-in from the left */
+.slide-in-left {
+    transform: translateX(-100%); /* Off-screen to the left */
+}
+
+/* Slide-in from the right */
+.slide-in-right {
+    transform: translateX(100%); /* Off-screen to the right */
+}
+
+/* Visible state */
+.animated-section.visible {
+    opacity: 1;
+    transform: translateX(0); /* Original position */
+}
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideIn2 {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+
+  .message{
+    background-color: green;
+  }
+  /* download page */
+  .pdf-container img {
+    max-width: 500px;
+    max-height: 500px;
+  }
+  /* admin */
+  .main-uploaded-book .single-image {
+    height: auto;
+    width: 200px;
+
+  }
+  .single-image button{
+    margin: 5px;
+  }
+
+
+.register-section .form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.register-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.register-section .form-group {
+  margin-bottom: 20px;
+}
+
+.register-section .form-group label {
+  display: block;
+  font-weight: bold;
+  color: #555;
+}
+
+.register-section .form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.register-section .form-group input:focus {
+  border-color: #0066cc;
+  outline: none;
+}
+
+.register-section .btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.register-section .btn:hover {
+  background-color: #218838;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .register-section .form-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .register-section h2 {
+    font-size: 24px;
+  }
+
+  .register-section .form-group input {
+    padding: 8px;
+  }
+
+  .register-section .btn {
+    padding: 10px;
+  }
+  .books{
+    display: flex;
+  }
+  
+  .respo img{
+    height: 150px;
+    width: 250px;
+
+  }
+}
+
+@media (min-width: 769px){
+  .respo img{
+    object-fit: contain/cover; 
+    height: 300px;
+    width: max-content;
+  }
+}
+
+
+

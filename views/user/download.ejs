@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download PDF - From Equiano to Rihanna</title>
+  <link rel="stylesheet" href="bootstrap-5.3.1/css/bootstrap.css">
+  <link rel="stylesheet" href="fontawesome-free-5.15.4-web/css/all.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!-- PDF Viewer Section -->
+  <section id="pdf-viewer" class="container my-5">
+    <h1 class="text-center">Download the Book</h1>
+
+    <!-- PDF Viewer -->
+    <div class="pdf-container my-4 text-center">
+        <img src="img/bookcover.jpeg" class="img-fluid" alt="">
+      <!-- <iframe src="" width="100%" height="600px" frameborder="0">
+        Your browser does not support PDFs. <a href="img/bookcover.jpeg">Download the PDF</a> to view it.
+      </iframe> -->
+    </div>
+
+    <!-- Download Button -->
+    <% if (pdf) { %>
+      <div class="text-center my-4">
+        <a href="/uploadedimages/<%= pdf.file %>" download class="btn btn-danger btn-lg">
+          <i class="fas fa-download"></i> Download PDF
+        </a>  
+      </div>
+    <% } else { %>
+      <p>No About the Book uploaded yet.</p>
+    <% } %>
+
+  
+    
+  </section>
+
+  <!-- Scroll to Top Button -->
+  <button class="btn btn-secondary scroll-to-top" onclick="scrollToTop()">⬆</button>
+
+  <!-- Scripts -->
+  <script src="bootstrap-5.3.1/js/bootstrap.js"></script>
+  <script src="fontawesome-free-5.15.4-web/js/all.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

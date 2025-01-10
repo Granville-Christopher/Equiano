@@ -1,0 +1,160 @@
+<%- include("partials/header.ejs") %>
+  <!-- Admin Panel Section -->
+  <section id="admin-panel" class="container">
+    <h1 class="text-center text-light">Admin Panel</h1>
+    
+
+    <!-- Upload Book PDF -->
+    <div class="card my-4">
+      <% if (message) { %>
+        <div class="alert-message container"><%= message %></div>
+      <% } %>
+      <div class="card-header">Upload Book PDF</div>
+      <div class="card-body">
+        <form id="upload-book-form" method="POST" action="/admin/upload-book" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="book-pdf" class="form-label">Choose PDF File</label>
+            <input type="file" class="form-control" id="book-pdf" name="book-pdf" accept="application/pdf" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload PDF</button>
+        </form>
+        
+      </div>
+    </div>
+
+    <!-- Upload About the Book -->
+    <div class="card my-4">
+      <div class="card-header">Upload About the Book</div>
+      <div class="card-body">
+        <% if (message) { %>
+          <div class="alert-message container"><%= message %></div>
+        <% } %>
+        <form id="upload-about-book-form" method="POST" action="/admin/upload-content">
+          <div class="mb-3">
+            <label for="about" class="form-label">About the Book</label>
+            <textarea class="form-control" id="about-book" name="about" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload About the Book</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Upload About the Author -->
+    <div class="card my-4">
+      <div class="card-header">Upload About the Author</div>
+      <div class="card-body">
+        <form id="upload-about-author-form" action="/admin/upload-author" method="POST">
+          <div class="mb-3">
+            <label for="author" class="form-label">About the Author</label>
+            <textarea class="form-control" id="about-author" name="author" style="color: black;" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload About the Author</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Upload Related Books -->
+    <div class="card my-4">
+      <div class="card-header">Upload Related Books</div>
+      <div class="card-body">
+        <form id="upload-related-books-form" method="POST" action="/admin/upload-related-book" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="image" class="form-label">Related Book Cover Image</label>
+            <input type="file" class="form-control" id="related-book-image" name="image" accept="image/*" required>
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Related Book Title</label>
+            <input type="text" class="form-control" id="related-book-title" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="link" class="form-label">Related Book Link</label>
+            <input type="url" class="form-control" id="related-book-link" name="link" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload Related Book</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Manage Uploaded Content -->
+    <div class="card my-4">
+      <div class="card-header">Manage Uploaded Content</div>
+      <div class="card-body">
+        <h3>Uploaded Book PDF</h3>
+        <% if (pdfs && pdfs.length > 0) { %>
+          <div class="uploaded-item mb-3">
+            <p><strong>File:</strong> <%= pdfs[0].originalName %></p>
+            <div class="main-uploaded-book">
+              <div class="single-image m-2">
+                <img src="/img/bookcover.jpeg" class="img-fluid" alt="Book Cover">
+                <div class="uploaded-pdf">
+                  <input type="text" value="<%= pdfs[0].file %>" disabled>
+                </div>
+                <div class="buttons mt-2">
+                  <form action="/admin/delete-file/<%= pdfs[0]._id %>" method="POST">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } else { %>
+          <p>No files uploaded yet.</p>
+        <% } %>
+        
+        
+
+        <h3>About the Book</h3>
+        <% if (about) { %>
+          <div class="uploaded-item mb-3">
+            <p><%= about.about %></p>
+            <form action="/admin/delete-about/<%= about._id %>" method="POST">
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </div>
+        <% } else { %>
+          <p>No About the Book uploaded yet.</p>
+        <% } %>
+        
+
+        <h3>About the Author</h3>
+        <% if (author) { %>
+          <div class="uploaded-item mb-3">
+            <p><%= author.author %></p>
+            <form action="/admin/delete-author/<%= author._id %>" method="POST">
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </div>
+        <% } else { %>
+          <p>No About the Author uploaded yet.</p>
+        <% } %>
+        
+
+        <h3>Related Books</h3>
+        <% if (related && related.length > 0) { %>
+          <div class="row container uploaded-item books " >
+            <% related.forEach(related => { %>
+              <div class="col-md-3 col-3 mt-2 respo">
+                <img src="/uploadedimages/<%= related.image %>" class="img-fluid respos" alt="Book Cover">
+
+                <p class="mt-2"><strong>Title:</strong> <%= related.title %></p>
+                <p><strong>Link:</strong> <a href="<%= related.link %>" target="_blank">View Book</a></p>
+                <form action="/admin/delete-related/<%= related._id %>" method="POST">
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <p>No related books uploaded yet.</p>
+        <% } %>
+        
+      </div>
+      
+
+    </div>
+  </section>
+
+  <button class="btn btn-secondary scroll-to-top" onclick="scrollToTop()">⬆</button>
+
+
+  <%- include("partials/footer.ejs") %>
