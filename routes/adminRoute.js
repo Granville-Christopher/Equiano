@@ -7,6 +7,7 @@ const PdfFile = require('../models/pdf')
 const AboutBook = require('../models/about')
 const AboutAuthor  = require('../models/aboutauthor')
 const RelatedBook  = require('../models/relatedbook')
+const Transaction = require('../models/transaction')
 
 
 // Route for the admin dashboard or index page
@@ -21,11 +22,12 @@ router.get('/', async (req, res) => {
     const about = await AboutBook.findOne().sort({ createdAt: -1 });
     const author = await AboutAuthor.findOne().sort({ createdAt: -1 });
     const related = await RelatedBook.find().sort({ createdAt: -1 });
+    const transaction = await Transaction.find().sort({ createdAt: -1 });
   
-    return res.render('admin/admin', { pdfs, about, author, related, title: 'Welcome to the Admin Dashboard', message: req.session.message }); // Pass the testimonials to the view
+    return res.render('admin/admin', { pdfs, about, author, related, transaction, title: 'Welcome to the Admin Dashboard', message: req.session.message }); // Pass the testimonials to the view
   } catch (error) {
     console.error(error);
-    return res.status(500).send('Error fetching pdfs');
+    return res.status(500).send('Error');
   }
 });
 

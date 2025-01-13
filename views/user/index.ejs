@@ -122,29 +122,26 @@
   
     <!-- Purchase Section -->
     <section id="buy" class="container my-5 fade-in slide-in-right animated-section">
-  
       <h5>Purchase the Book</h5>
-      <form id="purchase-form" action="" method="POST">
-  
+      <div id="purchase-form" >
+        <p class="text-light">"For international customers, payments will be processed in Nigerian Naira (₦). Your bank will handle the currency conversion at the prevailing exchange rate, and additional fees may apply."</p>
         <div class="mb-3">
-          <label for="name" class="form-label">Your Name</label>
-          <input type="text" class="form-control" id="name" required>
+          <label for="NAme" class="form-label name">Your Name</label>
+          <input type="text" class="form-control" id="NAme" name="NAme" required>
         </div>
         <div class="mb-3">
-          <label for="email" class="form-label">Your Email</label>
-          <input type="email" class="form-control" id="email" required>
+          <label for="Email" class="form-label email">Your Email</label>
+          <input type="email" class="form-control" id="Email" name="Email" required>
         </div>
         <div class="mb-3">
-          <label for="payment-method" class="form-label">Payment Method</label>
-          <select class="form-select" id="payment-method" required>
-            <option value="">Choose...</option>
-            <option value="credit-card">Credit Card</option>
-            <option value="paypal">PayPal</option>
-          </select>
+          <label for="price" class="form-label">Price</label>
+          <p class="form-control-plaintext text-white" id="price">N100.00</p>
+          <input type="hidden" name="price" value="100.00" id="hidden-price">
         </div>
-        <button type="submit" class="btn buy-btn">Purchase</button>
-      </form>
+        <button type="button" id="pay-now" class="btn buy-btn">Purchase</button>
+      </div>
     </section>
+    
   
     <!-- Scroll to Top Button -->
     <button class="btn btn-secondary scroll-to-top" onclick="scrollToTop()">⬆</button>
