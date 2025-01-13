@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   amount: price,
                 }),
               });
-              window.location.href = "download.ejs"
+              window.location.href = "/download"
             },
             onClose: function () {
               alert('Transaction was not completed, window closed.');
