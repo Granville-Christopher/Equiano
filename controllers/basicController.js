@@ -80,18 +80,13 @@ const saveTransaction = async (req, res) => {
     await transaction.save();
 
     console.log('Transaction saved:', transaction);
-
-    // Respond with a success message
+    req.session.paymentStatus = 'success';
     res.status(200).json({ success: true, message: 'Transaction saved successfully!' });
   } catch (error) {
     console.error('Error saving transaction:', error);
     res.status(500).json({ success: false, message: 'Error saving transaction.' });
   }
 };
-
-
-
-
 
 const download = async (req, res) => {
   const pdf = await PdfFile.findOne().sort({ createdAt: -1 });

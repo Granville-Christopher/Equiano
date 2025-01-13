@@ -45,13 +45,12 @@ document.addEventListener('DOMContentLoaded', function () {
               fetch('/save-transaction', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
+                body: JSON.stringify({ 
                   reference: response.reference,
                   email: email,
                   amount: price,
                 }),
               });
-              window.location.href = "/download"
             },
             onClose: function () {
               alert('Transaction was not completed, window closed.');

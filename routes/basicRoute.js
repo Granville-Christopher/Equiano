@@ -24,7 +24,7 @@ router.get('', async (req, res) => {
 
 router.post('/save-customer', basicController.saveCustomer);
 router.post('/save-transaction', basicController.saveTransaction);
-router.get('/download', basicController.download)
+// router.get('/download', basicController.download)
 router.post('/submit-testimonial', basicController.submitTestimonial);
 
 module.exports = router;
